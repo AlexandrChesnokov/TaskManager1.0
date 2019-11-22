@@ -11,8 +11,8 @@ public class ArrayTaskList extends AbstractTaskList {
     public void add(Task task) {
 
         if (list == null || list.length == 0) {
-            list = new Task[1];
-            list[0] = task;
+            list = new Task[10];
+            list[size()] = task;
         } else if (list[size()] == null) {
 
             list[size()] = task;
