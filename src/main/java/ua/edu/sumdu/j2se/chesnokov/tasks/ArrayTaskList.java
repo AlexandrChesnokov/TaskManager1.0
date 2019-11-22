@@ -10,18 +10,18 @@ public class ArrayTaskList extends AbstractTaskList {
     @Override
     public void add(Task task) {
 
-        if (list == null || list.length == 0) {
-            list = new Task[10];
-            list[size()] = task;
-        } else if (list[size()] == null) {
+        if (size() != list.length) {
 
-            list[size()] = task;
+         if (list[size()] == null ) {
 
-        } else {
+             list[size()] = task;
+         }
 
-            Task[] copy = new Task[list.length+10];
+        } else  {
 
-            System.arraycopy(list, 0, copy, 0, list.length);
+            Task[] copy = new Task[(int) ( size()*1.5)];
+
+            System.arraycopy(list, 0, copy, 0, size());
 
             copy[size()] = task;
             list = copy;
@@ -31,16 +31,19 @@ public class ArrayTaskList extends AbstractTaskList {
     @Override
     public boolean remove(Task task) {
 
-        for (int i = 0; i < list.length; i++) {
+        int size = size();
+
+        for (int i = 0; i < size; i++) {
             if (list[i].equals(task)) {
                 list[i] = null;
 
-                if (list.length - 1 - i >= 0) System.arraycopy(list, i + 1, list, i, list.length - 1 - i);
-
+                if (size - 1 - i >= 0) System.arraycopy(list, i + 1, list, i, size - 1 - i);
+                list[size-1] = null;
                 Task[] copy = new Task[list.length - 1];
 
-                if (list.length - 1 >= 0) System.arraycopy(list, 0, copy, 0, list.length - 1);
-                list = copy;
+                System.arraycopy(list, 0, copy, 0, size - 1);
+
+               list = copy;
                 return true;
             }
         }
@@ -62,7 +65,7 @@ public class ArrayTaskList extends AbstractTaskList {
 
     @Override
     public Task getTask(int index) {
-        if (index < 0 || index > list.length - 1) {
+        if (index < 0 || index > size() - 1) {
             throw new IndexOutOfBoundsException();
         } else {
             return list[index];
