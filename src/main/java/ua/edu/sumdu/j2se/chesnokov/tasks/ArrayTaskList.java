@@ -3,9 +3,51 @@ package ua.edu.sumdu.j2se.chesnokov.tasks;
 
 import java.util.Arrays;
 
+import java.util.NoSuchElementException;
+
+
 public class ArrayTaskList extends AbstractTaskList {
 
     private Task[] list = new Task[10];
+
+
+    @Override
+    public java.util.Iterator<Task> iterator() {
+      return new Iterator();
+    }
+
+   public class Iterator implements java.util.Iterator<Task> {
+
+        private int index = 0;
+        private Task currentTask;
+
+        @Override
+    public void remove() {
+            if (currentTask == null) {
+                throw new IllegalStateException();
+            } else {
+                ArrayTaskList.this.remove(currentTask);
+                currentTask = null;
+                index--;
+            }
+        }
+
+
+    @Override
+    public boolean hasNext() {
+            return index < size();
+    }
+
+    @Override
+    public Task next() {
+            if (index < size()) {
+                currentTask = list[index];
+                index++;
+                return currentTask;
+            }
+            throw new NoSuchElementException();
+    }
+}
 
     @Override
     public void add(Task task) {
@@ -76,6 +118,9 @@ public class ArrayTaskList extends AbstractTaskList {
     public AbstractTaskList createList() {
         return new ArrayTaskList();
     }
+
+
+
 
     @Override
     public boolean equals(Object o) {
