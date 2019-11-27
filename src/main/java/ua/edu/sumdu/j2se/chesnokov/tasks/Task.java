@@ -2,7 +2,7 @@ package ua.edu.sumdu.j2se.chesnokov.tasks;
 
 import java.util.Objects;
 
-public class Task {
+public class Task implements Cloneable {
 
     private String title;
     private int time;
@@ -54,11 +54,7 @@ public class Task {
     }
 
     public boolean isActive() {
-        if (active == true) {
-            return true;
-        } else {
-            return false;
-        }
+      return active;
     }
 
     public void setActive(boolean active) {
@@ -162,6 +158,11 @@ public class Task {
         return -1;
     }
 
+
+    @Override
+    public Task clone() throws CloneNotSupportedException {
+        return (Task) super.clone();
+    }
 
     @Override
     public String toString() {

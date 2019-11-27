@@ -1,10 +1,49 @@
 package ua.edu.sumdu.j2se.chesnokov.tasks;
 
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 
-public class LinkedTaskList extends AbstractTaskList {
+public class LinkedTaskList extends AbstractTaskList  {
 
+    @Override
+    public Iterator iterator() {
+        return new Iterator();
+    }
+
+    public class Iterator implements java.util.Iterator<Task> {
+
+        private int index = 0;
+        private Task currentTask;
+
+        @Override
+        public void remove() {
+            if (currentTask == null) {
+                throw new IllegalStateException();
+            } else {
+                LinkedTaskList.this.remove(currentTask);
+                currentTask = null;
+                index--;
+            }
+        }
+
+
+        @Override
+        public boolean hasNext() {
+            return index < size();
+        }
+
+        @Override
+        public Task next() {
+            if (index < size()) {
+                currentTask = getTask(index);
+                index++;
+                return currentTask;
+            }
+            throw new NoSuchElementException();
+        }
+    }
 
     private int size = 0;
     private Node<Task> firstNode;
@@ -18,7 +57,7 @@ public class LinkedTaskList extends AbstractTaskList {
 
     public void add(Task task) {
         Node<Task> node = lastNode;
-        node.setCurrentElement(task);
+        node.setItem(task);
         lastNode = new Node<Task>(null, node, null);
         node.setNextElement(lastNode);
         size++;
@@ -28,23 +67,23 @@ public class LinkedTaskList extends AbstractTaskList {
         Node<Task> target = firstNode.getNextElement();
         for (int i = 0; i < size; i++) {
 
-            if (task.equals((target.getCurrentElement())) & i == 0) {
+            if (task.equals((target.getItem())) & i == 0) {
 
                 firstNode.setNextElement(target.getNextElement());
                 target.getNextElement().setPrevElement(target.getPrevElement());
                 target.setNextElement(null);
                 target.setPrevElement(null);
-                target.setCurrentElement(null);
+                target.setItem(null);
                 size--;
                 return true;
 
-            } else if (task.equals((target.getCurrentElement())) & i > 0) {
+            } else if (task.equals((target.getItem())) & i > 0) {
 
                 target.getPrevElement().setNextElement(target.getNextElement());
                 target.getNextElement().setPrevElement(target.getPrevElement());
                 target.setNextElement(null);
                 target.setPrevElement(null);
-                target.setCurrentElement(null);
+                target.setItem(null);
                 size--;
                 return true;
 
@@ -64,7 +103,7 @@ public class LinkedTaskList extends AbstractTaskList {
         for (int i = 0; i < index; i++) {
             target = getNextElement(target);
         }
-        return target.getCurrentElement();
+        return target.getItem();
     }
 
 
@@ -73,25 +112,26 @@ public class LinkedTaskList extends AbstractTaskList {
     }
 
     private static class Node<Task> {
-        private Task currentElement;
+        private Task item;
         private Node<Task> nextElement;
         private Node<Task> prevElement;
 
 
-        private Node(Task currentElement, Node<Task> prevElement, Node<Task> nextElement) {
-            this.currentElement = currentElement;
+
+        private Node(Task item, Node<Task> prevElement, Node<Task> nextElement) {
+            this.item = item;
             this.nextElement = nextElement;
             this.prevElement = prevElement;
 
 
         }
 
-        public Task getCurrentElement() {
-            return currentElement;
+        public Task getItem() {
+            return item;
         }
 
-        public void setCurrentElement(Task currentElement) {
-            this.currentElement = currentElement;
+        public void setItem(Task item) {
+            this.item = item;
         }
 
         public Node<Task> getNextElement() {
@@ -116,18 +156,52 @@ public class LinkedTaskList extends AbstractTaskList {
         return new LinkedTaskList();
     }
 
+
+
+    public LinkedTaskList clone() throws CloneNotSupportedException {
+        LinkedTaskList cloneList = (LinkedTaskList) super.clone();
+
+
+        Iterator iterator = this.iterator();
+
+        cloneList.size = 0;
+
+
+        while (iterator.hasNext()) {
+            cloneList.add(iterator.next().clone());
+        }
+        return cloneList;
+
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         LinkedTaskList that = (LinkedTaskList) o;
+        if (size == 0 & that.size == 0) return true;
+        if (size == that.size) {
+            int counter = 0;
+            for (int i = 0; i < size; i++) {
+                if (getTask(i).equals(that.getTask(i)))
+                    counter++;
+            }
+            return counter == size;
+        }
         return size == that.size &&
-                Objects.equals(firstNode, that.firstNode) &&
-                Objects.equals(lastNode, that.lastNode);
+                firstNode.equals(that.firstNode) &&
+                lastNode.equals(that.lastNode);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(size, firstNode, lastNode);
+        int hash = 0;
+        Iterator iterator = this.iterator();
+        while (iterator.hasNext()) {
+          hash +=  Objects.hash(iterator.next());
+        }
+        hash+= size;
+        return hash;
     }
 }

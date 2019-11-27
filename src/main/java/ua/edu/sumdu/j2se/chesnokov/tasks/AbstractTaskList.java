@@ -1,9 +1,14 @@
 package ua.edu.sumdu.j2se.chesnokov.tasks;
 
 import javax.xml.stream.StreamFilter;
+import java.util.Iterator;
+import java.util.Spliterator;
+import java.util.function.Consumer;
 import java.util.stream.Stream;
 
-public abstract class AbstractTaskList {
+public abstract class AbstractTaskList implements Iterable<Task>, Cloneable{
+
+
 
     public abstract void add(Task task);
 
@@ -26,6 +31,8 @@ public abstract class AbstractTaskList {
         for (int i = 0; i < this.size(); i++) {
             if (this.getTask(i).isActive() & !this.getTask(i).isRepeated() & this.getTask(i).getTime() > from & this.getTask(i).getTime() <= to) {
                 abstractTaskList.add(this.getTask(i));
+
+
 
             } else if (this.getTask(i).isActive() & this.getTask(i).isRepeated() & this.getTask(i).getEndTime() > from) {
 

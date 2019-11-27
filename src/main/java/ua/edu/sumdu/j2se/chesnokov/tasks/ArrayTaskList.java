@@ -6,13 +6,13 @@ import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 
-public class ArrayTaskList extends AbstractTaskList {
+public class ArrayTaskList extends AbstractTaskList  {
 
     private Task[] list = new Task[10];
 
 
-    @Override
-    public java.util.Iterator<Task> iterator() {
+
+    public Iterator iterator() {
       return new Iterator();
     }
 
@@ -121,6 +121,12 @@ public class ArrayTaskList extends AbstractTaskList {
 
 
 
+    public ArrayTaskList clone() throws CloneNotSupportedException {
+        ArrayTaskList arrayTaskList = (ArrayTaskList) super.clone();
+
+        arrayTaskList.list = list.clone();
+        return arrayTaskList;
+    }
 
     @Override
     public boolean equals(Object o) {
