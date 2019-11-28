@@ -4,6 +4,7 @@ package ua.edu.sumdu.j2se.chesnokov.tasks;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Objects;
+import java.util.stream.Stream;
 
 public class LinkedTaskList extends AbstractTaskList  {
 
@@ -156,7 +157,15 @@ public class LinkedTaskList extends AbstractTaskList  {
         return new LinkedTaskList();
     }
 
+    @Override
+    public Stream<Task> getStream() {
+        Stream.Builder<Task> builder = Stream.builder();
+        for (Task task : this) {
+            builder.add(task);
+        }
 
+        return builder.build();
+    }
 
     public LinkedTaskList clone() throws CloneNotSupportedException {
         LinkedTaskList cloneList = (LinkedTaskList) super.clone();
@@ -189,9 +198,7 @@ public class LinkedTaskList extends AbstractTaskList  {
             }
             return counter == size;
         }
-        return size == that.size &&
-                firstNode.equals(that.firstNode) &&
-                lastNode.equals(that.lastNode);
+        return false;
     }
 
     @Override

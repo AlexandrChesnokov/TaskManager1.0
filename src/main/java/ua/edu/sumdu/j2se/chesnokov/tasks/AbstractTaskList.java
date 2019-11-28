@@ -20,13 +20,20 @@ public abstract class AbstractTaskList implements Iterable<Task>, Cloneable{
 
     public abstract AbstractTaskList createList();
 
-    public AbstractTaskList incoming(int from, int to) {
+    public abstract Stream<Task> getStream();
+
+    public final AbstractTaskList incoming(int from, int to) {
 
         AbstractTaskList abstractTaskList = createList();
 
-        //AbstractTaskList abstractTaskList = TaskListFactory.createTaskList(this instanceof ArrayTaskList ? ListTypes.types.ARRAY : ListTypes.types.LINKED);
 
-       // abstractTaskList.filter(el -> el.isActive() & !el.isRepeated() & el.getTime() > from & el.getTime() <= to).forEach(abstractTaskList::add);
+        abstractTaskList.getStream().filter(task -> task.nextTimeAfter(from) <= to).forEach(abstractTaskList::add);
+
+        return abstractTaskList;
+    }
+}
+
+        /*
 
         for (int i = 0; i < this.size(); i++) {
             if (this.getTask(i).isActive() & !this.getTask(i).isRepeated() & this.getTask(i).getTime() > from & this.getTask(i).getTime() <= to) {
@@ -43,7 +50,5 @@ public abstract class AbstractTaskList implements Iterable<Task>, Cloneable{
                     }
                 }
             }
-        }
-        return abstractTaskList;
-    }
-}
+        }*/
+

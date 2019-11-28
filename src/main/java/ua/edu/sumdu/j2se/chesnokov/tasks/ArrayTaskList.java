@@ -4,6 +4,7 @@ package ua.edu.sumdu.j2se.chesnokov.tasks;
 import java.util.Arrays;
 
 import java.util.NoSuchElementException;
+import java.util.stream.Stream;
 
 
 public class ArrayTaskList extends AbstractTaskList  {
@@ -119,7 +120,15 @@ public class ArrayTaskList extends AbstractTaskList  {
         return new ArrayTaskList();
     }
 
+    @Override
+    public Stream<Task> getStream() {
+    Stream.Builder<Task> builder = Stream.builder();
+        for (Task task : this) {
+            builder.add(task);
+        }
 
+        return builder.build();
+    }
 
     public ArrayTaskList clone() throws CloneNotSupportedException {
         ArrayTaskList arrayTaskList = (ArrayTaskList) super.clone();
