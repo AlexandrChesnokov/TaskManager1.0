@@ -6,8 +6,7 @@ import java.util.Spliterator;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 
-public abstract class AbstractTaskList implements Iterable<Task>, Cloneable{
-
+public abstract class AbstractTaskList implements Iterable<Task>, Cloneable {
 
 
     public abstract void add(Task task);
@@ -21,17 +20,9 @@ public abstract class AbstractTaskList implements Iterable<Task>, Cloneable{
     public abstract AbstractTaskList createList();
 
     public abstract Stream<Task> getStream();
-
-    public final AbstractTaskList incoming(int from, int to) {
-
-        AbstractTaskList abstractTaskList = createList();
-
-
-        abstractTaskList.getStream().filter(task -> task.nextTimeAfter(from) <= to).forEach(abstractTaskList::add);
-
-        return abstractTaskList;
-    }
 }
+
+
 
         /*
 
