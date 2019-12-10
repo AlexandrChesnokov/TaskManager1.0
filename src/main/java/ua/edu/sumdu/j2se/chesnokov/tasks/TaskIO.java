@@ -186,6 +186,12 @@ public class TaskIO {
             write(tasks, writer);
         } catch (IOException e) {
             System.out.println("Файл не найден - " + file);
+        } finally {
+            try {
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -199,6 +205,12 @@ public class TaskIO {
 
         } catch (IOException e) {
             System.out.println("1");
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
