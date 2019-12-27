@@ -19703,3 +19703,12 @@
 2019-12-27 22:25:36 DEBUG RemoveController:24 - Ответ - true
 2019-12-27 22:25:36 DEBUG EditController:23 - Проверка наличия файла save
 2019-12-27 22:25:36 DEBUG EditController:25 - Ответ - true
+2019-12-28 02:42:35 INFO  MainController:23 - Загрузка данных с файла
+2019-12-28 02:42:35 INFO  MainController:25 - Проверка наличия файла save
+2019-12-28 02:42:35 INFO  MainController:27 - Ответ - true
+2019-12-28 02:42:35 DEBUG CreateController:24 - Проверка наличия файла save
+2019-12-28 02:42:35 DEBUG CreateController:26 - Ответ - true
+2019-12-28 02:42:35 DEBUG RemoveController:22 - Проверка наличия файла save
+2019-12-28 02:42:35 DEBUG RemoveController:24 - Ответ - true
+2019-12-28 02:42:35 DEBUG EditController:23 - Проверка наличия файла save
+2019-12-28 02:42:35 DEBUG EditController:25 - Ответ - true
