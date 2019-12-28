@@ -2,9 +2,12 @@
   <artifact type="jar" name="NCTaskManager:jar">
     <output-path>$PROJECT_DIR$/classes/artifacts/NCTaskManager_jar</output-path>
     <root id="archive" name="NCTaskManager.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/src/main/java/ua/edu/sumdu/j2se/chesnokov/tasks/META-INF/MANIFEST.MF" />
+      </element>
       <element id="module-output" name="NCTaskManager" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.8.5/gson-2.8.5.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/log4j/log4j/1.2.16/log4j-1.2.16.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.8.5/gson-2.8.5.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
