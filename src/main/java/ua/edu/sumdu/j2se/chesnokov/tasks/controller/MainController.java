@@ -60,7 +60,7 @@ public class MainController implements Controller  {
     public  int process(AbstractTaskList taskList)  {
         CheckIncoming checkIncoming = new CheckIncoming(taskList, new CheckIncomingView());
         int action = view.printMenu();
-        if (action > 1 & action < 7) {
+        if (action > 0 & action < 7) {
         checkIncoming.start();
         logger.info("Запустился поток checkIncoming");
 
