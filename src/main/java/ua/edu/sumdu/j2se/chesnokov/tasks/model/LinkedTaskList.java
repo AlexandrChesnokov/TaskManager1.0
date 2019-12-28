@@ -5,6 +5,9 @@ import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.stream.Stream;
 
+/**
+ * This class is a tasks list
+ */
 public class LinkedTaskList extends AbstractTaskList {
 
     @Override

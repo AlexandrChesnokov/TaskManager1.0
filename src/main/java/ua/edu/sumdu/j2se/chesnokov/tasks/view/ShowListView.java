@@ -8,6 +8,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ * This class is responsible for displaying the task list
+ */
 public class ShowListView implements View {
     private BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     private static Logger logger = Logger.getLogger(RemoveView.class);

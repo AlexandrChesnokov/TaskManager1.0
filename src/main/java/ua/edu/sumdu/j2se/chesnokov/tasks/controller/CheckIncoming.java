@@ -9,6 +9,8 @@ import ua.edu.sumdu.j2se.chesnokov.tasks.view.CheckIncomingView;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * This class starts a thread that outputs an ALERT about a task that needs to be completed*/
 public class CheckIncoming extends Thread {
     private static Logger logger = Logger.getLogger(CheckIncoming.class);
     AbstractTaskList taskList;

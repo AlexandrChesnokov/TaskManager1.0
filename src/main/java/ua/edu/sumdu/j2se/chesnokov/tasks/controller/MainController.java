@@ -14,6 +14,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class is responsible for calling other controllers
+ */
 public class MainController implements Controller  {
     private static Logger logger = Logger.getLogger(MainController.class);
 
@@ -36,7 +39,13 @@ public class MainController implements Controller  {
         this.view = view;
     }
 
+    /**
+     This is a list for all controllers
+     */
     public static ArrayList<Controller> controllers = new ArrayList<>();
+    /**
+     This is a list for all observers
+     */
     public static List<Observer> observers = new ArrayList<>();
 
     public void attach(Observer observer) {
@@ -56,7 +65,10 @@ public class MainController implements Controller  {
     public boolean canProcess(int action) {
         return false;
     }
-
+    /**
+     * This method starts the process of searching for the desired controller
+     */
+    @Override
     public  int process(AbstractTaskList taskList)  {
         CheckIncoming checkIncoming = new CheckIncoming(taskList, new CheckIncomingView());
         int action = view.printMenu();

@@ -1,7 +1,9 @@
 package ua.edu.sumdu.j2se.chesnokov.tasks.model;
 
 
-
+/**
+ * This class implements a factory method for creating a task list
+ */
 public class TaskListFactory {
 
     public static AbstractTaskList createTaskList(ListTypes.types type) {

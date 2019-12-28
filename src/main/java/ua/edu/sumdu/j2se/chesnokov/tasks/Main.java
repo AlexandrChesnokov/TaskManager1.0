@@ -1,17 +1,15 @@
 package ua.edu.sumdu.j2se.chesnokov.tasks;
-
-
 import org.apache.log4j.Logger;
 import ua.edu.sumdu.j2se.chesnokov.tasks.controller.*;
 import ua.edu.sumdu.j2se.chesnokov.tasks.model.ArrayTaskList;
-
 import ua.edu.sumdu.j2se.chesnokov.tasks.model.TaskIO;
 import ua.edu.sumdu.j2se.chesnokov.tasks.view.*;
-
 import java.io.File;
 import java.io.IOException;
 
-
+/**
+ * This is the main class that runs the application
+ */
 public class Main {
     private static Logger logger = Logger.getLogger(MainController.class);
     public static void main(String[] args) throws IOException {

@@ -2,6 +2,9 @@ package ua.edu.sumdu.j2se.chesnokov.tasks.controller;
 
 import ua.edu.sumdu.j2se.chesnokov.tasks.model.AbstractTaskList;
 
+/**
+ * This interface declares canProcess & process methods, and final variables
+ */
 public interface Controller {
 
     final int CREATE_ACTION = 1;

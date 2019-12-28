@@ -11,7 +11,9 @@ import ua.edu.sumdu.j2se.chesnokov.tasks.view.MainView;
 import java.io.File;
 import java.io.IOException;
 
-
+/**
+ * This class is responsible for deleting tasks
+ */
 public class RemoveController implements Controller, Observed{
 
     private File file = new File(System.getProperty("user.dir").concat("/save.json"));
@@ -39,12 +41,16 @@ public RemoveController(ShowListView listview, MainView view, RemoveView removeV
     this.removeView = removeView;
     MainController.controllers.add(this);
 }
-
+    /**
+     * This method checks 'action' for a match with 'REMOVE_ACTION'
+     */
     @Override
     public boolean canProcess(int action) {
         return action == REMOVE_ACTION;
     }
-
+/**
+ * This method starts the task deletion process
+ */
     @Override
     public int process(AbstractTaskList taskList) {
 
@@ -79,7 +85,9 @@ public RemoveController(ShowListView listview, MainView view, RemoveView removeV
     }
 
 
-
+    /**
+     * This method is responsible for notifying the user
+     */
     @Override
     public void notifyUser() {
         for (Observer observer : MainController.observers) {

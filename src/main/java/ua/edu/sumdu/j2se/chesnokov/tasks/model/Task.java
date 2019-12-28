@@ -1,12 +1,13 @@
 package ua.edu.sumdu.j2se.chesnokov.tasks.model;
-
-
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
+
+/**
+ * This class is a task
+ */
 public class Task implements Cloneable, Serializable {
 
     private String title;
@@ -153,7 +154,9 @@ public class Task implements Cloneable, Serializable {
     public int hashCode() {
         return Objects.hash(title, time, start, end, interval, active);
     }
-
+/**
+ * This method finds the time of the next task
+ */
     public LocalDateTime nextTimeAfter(LocalDateTime current) {
 
         if (this.isActive() & !this.isRepeated() & current.isBefore(this.getTime())) {

@@ -1,5 +1,6 @@
 package ua.edu.sumdu.j2se.chesnokov.tasks.controller;
 
+
 import org.apache.log4j.Logger;
 import ua.edu.sumdu.j2se.chesnokov.tasks.model.AbstractTaskList;
 import ua.edu.sumdu.j2se.chesnokov.tasks.model.Task;
@@ -10,7 +11,9 @@ import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.Set;
 
-
+/**
+ *This is class that shows the calendar
+ */
 public class CalendarController implements Controller {
 
     private static Logger logger = Logger.getLogger(CalendarController.class);
@@ -24,12 +27,15 @@ public class CalendarController implements Controller {
         MainController.controllers.add(this);
     }
 
-
+    /**
+     * This method checks 'action' for a match with 'CALENDAR_ACTION'
+     */
     @Override
     public boolean canProcess(int action) {
         return action == CALENDAR_ACTION;
     }
-
+     /**
+      * This method starts the calendar output process*/
     @Override
     public int process(AbstractTaskList taskList) {
         logger.debug("Запустился Calendar process");

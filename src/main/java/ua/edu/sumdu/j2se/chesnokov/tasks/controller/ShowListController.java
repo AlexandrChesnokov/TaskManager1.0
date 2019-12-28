@@ -6,8 +6,10 @@ import ua.edu.sumdu.j2se.chesnokov.tasks.view.MainView;
 import ua.edu.sumdu.j2se.chesnokov.tasks.view.ShowListView;
 
 
-
-public class ShowListController implements Controller, Observed {
+/**
+ * This class is responsible for displaying the task list
+ */
+public class ShowListController implements Controller {
 
 
     private static Logger logger = Logger.getLogger(ShowListController.class);
@@ -20,7 +22,9 @@ public class ShowListController implements Controller, Observed {
         this.view = view;
         MainController.controllers.add(this);
     }
-
+/**
+ * This method starts the list display process
+ */
     @Override
     public int process(AbstractTaskList taskList) {
 
@@ -50,16 +54,13 @@ public class ShowListController implements Controller, Observed {
 
         return view.printMenu();
     }
-
+    /**
+     * This method checks 'action' for a match with 'CHECK_ACTION'
+     */
     @Override
     public boolean canProcess(int action) {
         return action == CHECK_ACTION;
     }
 
-    @Override
-    public void notifyUser() {
-        for (Observer observer : MainController.observers) {
-            observer.notification("Активность изменена ");
-        }
-    }
+
 }

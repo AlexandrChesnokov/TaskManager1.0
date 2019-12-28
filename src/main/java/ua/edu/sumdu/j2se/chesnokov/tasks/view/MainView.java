@@ -4,6 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ * This class is responsible for displaying the main menu
+ */
 public class MainView implements View {
 BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     public int printMenu() {

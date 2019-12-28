@@ -1,16 +1,11 @@
 package ua.edu.sumdu.j2se.chesnokov.tasks.model;
-
-
-
-
-
 import java.util.Arrays;
-
-
 import java.util.NoSuchElementException;
 import java.util.stream.Stream;
 
-
+/**
+ * This class is a tasks list
+ */
 public class ArrayTaskList extends AbstractTaskList {
 
     private Task[] list = new Task[10];

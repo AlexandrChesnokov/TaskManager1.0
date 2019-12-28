@@ -3,6 +3,9 @@ package ua.edu.sumdu.j2se.chesnokov.tasks.model;
 import java.io.Serializable;
 import java.util.stream.Stream;
 
+/**
+ * This class is an abstract list
+ */
 public abstract class AbstractTaskList implements Iterable<Task>, Cloneable, Serializable {
 
 

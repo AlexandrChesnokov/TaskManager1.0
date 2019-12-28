@@ -6,6 +6,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ * This class is responsible for displaying the delete task menu
+ */
 public class RemoveView implements View {
 
     private BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));

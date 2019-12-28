@@ -7,8 +7,14 @@ import java.io.*;
 import java.time.*;
 import java.time.temporal.TemporalAccessor;
 
+/**
+ * This class is responsible for the input/output of tasks
+ */
 public class TaskIO {
 
+    /**
+     * This method writes tasks from the list to the stream
+     */
     public static void write(AbstractTaskList tasks, OutputStream out) {
         TemporalAccessor temporalAccessor = ZonedDateTime.now();
         ObjectOutputStream dataOut = null;
@@ -50,7 +56,9 @@ public class TaskIO {
 
 
     }
-
+/**
+ * This method reads tasks from a stream to a list
+ */
     public static void read(AbstractTaskList tasks, InputStream in)  {
         ObjectInputStream dataIn = null;
         TemporalAccessor temporalAccessor = ZonedDateTime.now();
@@ -102,6 +110,10 @@ public class TaskIO {
           }
       }
     }
+
+    /**
+     * This method writes tasks from the list to a file
+     */
     public static void writeBinary(AbstractTaskList tasks, File file)  {
         ObjectOutputStream objOut = null;
         try {
@@ -121,7 +133,9 @@ public class TaskIO {
             }
         }
     }
-
+/**
+ * This method reads tasks from a file to a list
+ */
     public static void readBinary(AbstractTaskList tasks, File file)  {
         ObjectInputStream objIn = null;
         try {
@@ -142,6 +156,9 @@ public class TaskIO {
 
     }
 
+    /**
+     * This method writes tasks from the list to the stream, in JSON format
+     */
     public static void write(AbstractTaskList tasks, Writer out) {
 
         Gson gson = new Gson();
@@ -158,6 +175,9 @@ public class TaskIO {
 
     }
 
+    /**
+     * This method reads tasks from a stream to a list, in JSON format
+     */
     public static void read(AbstractTaskList tasks, Reader in) {
         Gson gson = new Gson();
        if (tasks instanceof ArrayTaskList) {
@@ -177,6 +197,9 @@ public class TaskIO {
 
     }
 
+    /**
+     * This method writes tasks from the list to a file in JSON format
+     */
     public static void writeText(AbstractTaskList tasks, File file) {
         Gson gson = new Gson();
         FileWriter writer = null;
@@ -194,6 +217,9 @@ public class TaskIO {
         }
     }
 
+    /**
+     * This method reads tasks from a file to a list in JSON format
+     */
     public static 	void readText(AbstractTaskList tasks, File file) {
         Gson gson = new Gson();
 

@@ -13,6 +13,10 @@ import java.io.IOException;
 
 import java.time.LocalDateTime;
 
+/**
+ * This class is responsible for editing tasks
+ * editing title, start time, end time, interval or activity.
+ */
 public class EditController implements Controller, Observed{
 
     private File file = new File(System.getProperty("user.dir").concat("/save.json"));
@@ -42,12 +46,17 @@ public class EditController implements Controller, Observed{
     }
 
 
-
+    /**
+     * This method checks 'action' for a match with 'EDIT_ACTION'
+     */
     @Override
     public boolean canProcess(int action) {
         return action == EDIT_ACTION;
     }
 
+    /**
+     * This method starts the tasks editing process
+     */
     @Override
     public int process(AbstractTaskList taskList) {
 
@@ -121,7 +130,9 @@ public class EditController implements Controller, Observed{
         return view.printMenu();
     }
 
-
+    /**
+     * This method is responsible for notifying the user
+     */
     @Override
     public void notifyUser() {
         for (Observer observer : MainController.observers) {

@@ -5,8 +5,14 @@ package ua.edu.sumdu.j2se.chesnokov.tasks.model;
 import java.time.LocalDateTime;
 import java.util.*;
 
+/**
+ * This class is responsible for the calendar
+ */
 public class Tasks {
 
+    /**
+     * This method returns a list of tasks that start at the specified time interval
+     */
     public static Iterable<Task> incoming(Iterable<Task> tasks, LocalDateTime start, LocalDateTime end) {
 
         AbstractTaskList iterableList = TaskListFactory.createTaskList(tasks instanceof ArrayTaskList ? ListTypes.types.ARRAY : ListTypes.types.LINKED);
@@ -19,6 +25,9 @@ public class Tasks {
         return iterableList;
     }
 
+    /**
+     * This method returns a calendar list
+     */
     public static SortedMap<LocalDateTime, Set<Task>> calendar(Iterable<Task> tasks, LocalDateTime start, LocalDateTime end) {
 
         SortedMap<LocalDateTime, Set<Task>> map = new TreeMap<>();

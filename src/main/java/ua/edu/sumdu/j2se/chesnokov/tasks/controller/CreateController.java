@@ -13,7 +13,9 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 
-
+/**
+ * This class is responsible for creating tasks
+ */
 public class CreateController implements Controller, Observed{
 
     private File file = new File(System.getProperty("user.dir").concat("/save.json"));
@@ -42,13 +44,18 @@ public CreateController(MainView view, CreateView createView) {
     MainController.controllers.add(this);
 }
 
-
+    /**
+     * This method checks 'action' for a match with 'CREATE_ACTION'
+     */
 @Override
     public boolean canProcess(int action) {
     return action == CREATE_ACTION;
 }
 
 
+    /**
+     * This method starts creating tasks process
+     */
     @Override
     public int process(AbstractTaskList taskList) {
 
@@ -113,7 +120,9 @@ public CreateController(MainView view, CreateView createView) {
 }
 
 
-
+/**
+ * This method is responsible for notifying the user
+ */
     @Override
     public void notifyUser() {
      for (Observer observer : MainController.observers) {
