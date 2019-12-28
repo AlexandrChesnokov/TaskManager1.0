@@ -125,7 +125,7 @@ public class EditController implements Controller, Observed{
     @Override
     public void notifyUser() {
         for (Observer observer : MainController.observers) {
-            observer.notification("Изменения внесены ✔");
+            observer.notification("Изменения внесены ");
         }
     }
 

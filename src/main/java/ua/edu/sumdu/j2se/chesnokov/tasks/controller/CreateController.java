@@ -117,7 +117,7 @@ public CreateController(MainView view, CreateView createView) {
     @Override
     public void notifyUser() {
      for (Observer observer : MainController.observers) {
-         observer.notification("В вашем списке появилась новая задача ✔");
+         observer.notification("В вашем списке появилась новая задача ");
      }
     }
 }

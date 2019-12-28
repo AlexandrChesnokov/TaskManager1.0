@@ -59,7 +59,7 @@ public class ShowListController implements Controller, Observed {
     @Override
     public void notifyUser() {
         for (Observer observer : MainController.observers) {
-            observer.notification("Активность изменена ✔");
+            observer.notification("Активность изменена ");
         }
     }
 }

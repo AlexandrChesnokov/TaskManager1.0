@@ -83,7 +83,7 @@ public RemoveController(ShowListView listview, MainView view, RemoveView removeV
     @Override
     public void notifyUser() {
         for (Observer observer : MainController.observers) {
-            observer.notification("Задача удалена успешно ✔");
+            observer.notification("Задача удалена успешно ");
         }
     }
 }
